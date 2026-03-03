@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Holi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
+  background-size: 400% 400%;
+  animation: bg 10s infinite alternate;
+}
+
+@keyframes bg {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+#popup {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+#content {
+  display: none;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  color: white;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.color {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="popup">
+  <button onclick="showWish()">🎁 Tap to Reveal Holi Surprise</button>
+</div>
+
+<div id="content">
+  <h1>🌈 Happy Holi 2026 🎉</h1>
+  <p><strong>Mamupuria Electric and Engg Works</strong></p>
+  <p>📍 Tohana, Haryana</p>
+</div>
+
+<script>
+function showWish() {
+  document.getElementById("popup").style.display = "none";
+  document.getElementById("content").style.display = "block";
+
+  setInterval(createColor, 80);
+}
+
+function createColor() {
+  const color = document.createElement("div");
+  color.classList.add("color");
+  color.style.left = Math.random() * window.innerWidth + "px";
+  color.style.background =
+    `hsl(${Math.random() * 360}, 100%, 50%)`;
+  document.body.appendChild(color);
+
+  setTimeout(() => {
+    color.remove();
+  }, 5000);
+}
+</script>
+
+</body>
+</html>
